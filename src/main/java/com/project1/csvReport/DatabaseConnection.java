@@ -6,21 +6,20 @@ import java.sql.DriverManager;
 public class DatabaseConnection {
 
 	public static Connection getConnection() {
-		Connection myConn=null;
+		Connection myConn = null;
 		try {
-		
+
 			String dbName = "tempdb";
-	        String serverip="localhost";
-	        String serverport="1433";
-	        String url = "jdbc:sqlserver://"+serverip+"\\SQLEXPRESS:"+serverport+";databaseName="+dbName+"";
+			String serverip = "localhost";
+			String serverport = "1433";
+			String url = "jdbc:sqlserver://" + serverip + "\\SQLEXPRESS:" + serverport + ";databaseName=" + dbName + "";
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			 myConn = DriverManager.getConnection(url, "admin","qwerty");
-		//	Connection myConn = DriverManager.getConnection("jdbc:sqlserver://localhost;user=admin;password=admin;");
-	}
-	catch (Exception e) {
-		e.printStackTrace();
-	}
-		
+			myConn = DriverManager.getConnection(url, "admin", "qwerty");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return myConn;
-}
+	}
 }
