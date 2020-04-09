@@ -2,9 +2,11 @@ package com.project1.csvReport;
 
 import java.io.File;
 import java.io.FileReader;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.io.ClassPathResource;
 
 import com.opencsv.CSVReader;
 
@@ -15,8 +17,10 @@ public class Driver {
 		try {
 
 			Connection Conn = DatabaseConnection.getConnection();
+		
+		  File file = new ClassPathResource(
+			      "static/DataSet1.csv").getFile();
 
-			File file = new File("D:\\projects\\Data1\\DataSet1.csv");
 			FileReader filereader = new FileReader(file);
 
 			CSVReader csvReader = new CSVReader(filereader);
